@@ -7,8 +7,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoginService {
+
     @Autowired
     UsuarioRepository usuarioRepo;
+
+    public String verificarPermissao(Usuario usuario) {
+        return usuarioRepo.findByLoginQuery(usuario.getLogin()).getPermissao();
+    }
+
     public boolean logar (Usuario usuario) {
         return usuarioRepo.findOneByLoginAndSenha(usuario.getLogin(),
                 usuario.getSenha()) != null;

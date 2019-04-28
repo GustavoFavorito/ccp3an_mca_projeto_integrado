@@ -14,7 +14,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             throws Exception {
 
         HttpSession session = request.getSession();
-        if (session.getAttribute("usuarioLogado") == null)
+        if (session.getAttribute("administradorLogado") == null)
             response.sendRedirect("login");
 
         return true;

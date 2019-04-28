@@ -23,14 +23,18 @@ public class LoginController {
     }
 
     @PostMapping ("/fazerLogin")
-    public String fazerLogin (HttpServletRequest request,
-                              Usuario usuario) {
+    public String fazerLogin (HttpServletRequest request, Usuario usuario) {
         if (loginService.logar(usuario)) {
-            request.getSession().setAttribute("usuarioLogado",
-                    usuario);
-            return "redirect:index";
-        }
-        else {
+            request.getSession().setAttribute("usuarioLogado", usuario);
+
+            if(loginService.verificarPermissao(usuario).equals("administrador")) {
+                return "indexAdministrador";
+            } else if (loginService.verificarPermissao(usuario).equals("user")){
+                return "indexUsuario";
+            } else {
+                return "login";
+            }
+        } else {
             return "login";
         }
     }
