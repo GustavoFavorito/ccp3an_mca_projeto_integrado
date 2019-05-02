@@ -15,8 +15,18 @@ public class LoginService {
         return usuarioRepo.findByLoginQuery(usuario.getLogin()).getPermissao();
     }
 
+    public boolean verificaLogin(Usuario usuario) {
+        return usuarioRepo.existsByLogin(usuario.getLogin());
+    }
+
     public boolean logar (Usuario usuario) {
         return usuarioRepo.findOneByLoginAndSenha(usuario.getLogin(),
                 usuario.getSenha()) != null;
+    }
+    
+    public void salvar(Usuario usuario) {
+        usuario.setSenha(usuario.getSenha());
+        usuario.setLogin(usuario.getLogin());
+        usuarioRepo.save(usuario);
     }
 }
