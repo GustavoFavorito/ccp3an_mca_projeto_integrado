@@ -31,7 +31,7 @@ public class LoginController {
             if(loginService.verificarPermissao(usuario).equals("administrador")) {
                 return "index";
             } else {
-                return "";
+                return "login";
             }
         } else {
             model.addAttribute("erroLogin", "erroLogin");
