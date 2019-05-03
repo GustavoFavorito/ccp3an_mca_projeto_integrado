@@ -29,9 +29,10 @@ public class CadastroController {
     public String fazerCadastro(Usuario usuario, Model model){
         if(cadastroService.verificaLogin(usuario)) {
             model.addAttribute("erroCadastro", "erroCadastro");
+            return "cadastro";
         } else {
             cadastroService.salvar(usuario);
         }
-        return "cadastro";
+        return "login";
     }
 }

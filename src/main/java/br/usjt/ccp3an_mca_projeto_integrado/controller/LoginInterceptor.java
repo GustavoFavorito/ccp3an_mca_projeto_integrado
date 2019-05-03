@@ -14,12 +14,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             throws Exception {
 
 //        HttpSession session = request.getSession();
-//        if (session.getAttribute("usuarioLogado") == null) {
-//            if(session.getAttribute("fazerCadastro") == "fazerCadastro") {
-//                response.sendRedirect(request.getContextPath() + "/cadastro");
-//            }
-//            response.sendRedirect(request.getContextPath() + "/login");
-//        }
+//        if(session.getAttribute("usuarioLogado")
         return true;
     }
 }
