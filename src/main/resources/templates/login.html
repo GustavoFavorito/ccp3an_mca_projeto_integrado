@@ -9,93 +9,44 @@
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
         <link rel="stylesheet" type="text/css" href="css/login.css"/>
         <title>Login</title>
-        
     </head>
     
     <body style="overflow-x: hidden; overflow-y: hidden;">
         <div class="container" >
-        <a class="links" id="paralogin"></a>
-        <a class="links" id="paracadastro"></a>
+            <div class="content">
+                <!--FORMULÁRIO DE LOGIN-->
+                <div id="login">
+                    <form action="#" th:action="@{/fazerLogin}" th:object="${usuario}" method="post" autocomplete="off">
+                        <h1>Login</h1>
+                        <p>
+                            <label for="usuario">Usuario</label>
+                            <input id="usuario" required="required" type="text" placeholder="usuario" th:field="*{login}"/>
+                        </p>
 
-        <div class="content">
-            <!--FORMULÁRIO DE CADASTRO-->
-            <div id="cadastro">
-                <form action="#" th:action="@{/fazerCadastro}" th:object="${usuario}" method="POST" autocomplete="off">
-                    <h1>Cadastro</h1>
-                    <p>
-                        <label for="usuario_cad">Usuario</label>
-                        <input id="usuario_cad" name="usuario_cad" required="required" placeholder="usuario" th:field="*{login}"/>
-                        <script th:if="${erroCadastro != null}" class="erro">
-                            document.getElementById("usuario_cad").setCustomValidity("Usuario já cadastrado");
-                            document.getElementById("usuario_cad").reportValidity();
-                        </script>
-                    </p>
+                        <p>
+                            <label for="senha_login">Senha</label>
+                            <input id="senha_login" required="required" type="password" placeholder="senha" th:field="*{senha}"/>
+                            <span th:if="${erroLogin != null}" style="color:red">
+                                usuario ou senha incorretos!
+                            </span>
+                        </p>
 
-                    <p>
-                        <label for="senha_cad">Senha</label>
-                        <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="senha" th:field="*{senha}"/>
-                    </p>
+                        <p>
+                            <input type="checkbox" name="manterlogado" id="manterlogado" value="" />
+                            <label for="manterlogado">Manter-me logado</label>
+                        </p>
 
-                    <p>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <label for="admin">
-                                        <input id="admin" type="radio" name="permissao" value="administrador"/>
-                                        Admin
-                                    </label>
-                                </div>
-                                <div class="col-md-1">
-                                    <label for="user">
-                                        <input id="user" type="radio" checked="checked" name="permissao" value="user"/>
-                                        User
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-                    <p>
-                        <input type="submit" name="cadastrar" value="Cadastrar"/>
-                    </p>
-                    <p class="link">
-                        Já tem conta?
-                        <a href="#paralogin">Ir para Login</a>
-                    </p>
-                </form>
-            </div>
+                        <p>
+                            <input type="submit" value="Login"/>
+                        </p>
 
-            <!--FORMULÁRIO DE LOGIN-->
-            <div id="login">
-                <form action="#" th:action="@{/fazerLogin}" th:object="${usuario}" method="post" autocomplete="off">
-                    <h1>Login</h1>
-                    <p>
-                        <label for="usuario">Usuario</label>
-                        <input id="usuario" required="required" type="text" placeholder="usuario" th:field="*{login}"/>
-                    </p>
-
-                    <p>
-                        <label for="senha_login">Senha</label>
-                        <input id="senha_login" required="required" type="password" placeholder="senha" th:field="*{senha}"/>
-                        <span th:if="${erroLogin != null}" style="color:red">
-                            usuario ou senha incorretos!
-                        </span>
-                    </p>
-
-                    <p>
-                        <input type="checkbox" name="manterlogado" id="manterlogado" value="" />
-                        <label for="manterlogado">Manter-me logado</label>
-                    </p>
-
-                    <p>
-                        <input type="submit" value="Login"/>
-                    </p>
-
-                    <p class="link">
-                        Ainda não tem conta?
-                        <a href="#paracadastro">Cadastre-se</a>
-                    </p>
-                </form>
+                        <p class="link">
+                            Ainda não tem conta?
+                            <a href="/cadastro">Cadastre-se</a>
+                        </p>
+                    </form>
+                </div>
             </div>
         </div>
-      </div>
     </body>
 </html>

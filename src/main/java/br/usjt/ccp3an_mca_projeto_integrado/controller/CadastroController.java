@@ -9,30 +9,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
-public class LoginController {
+public class CadastroController {
 
     private LoginService loginService;
     private CadastroService cadastroService;
 
-    @GetMapping (value = {"/login", "/"})
-    public ModelAndView login () {
-        ModelAndView mv = new ModelAndView ("login");
+    @GetMapping(value = {"/cadastro"})
+    public ModelAndView login (HttpServletRequest request) {
+        request.getSession().setAttribute("fazerCadastro", "fazerCadastro");
+        ModelAndView mv = new ModelAndView ("cadastro");
         mv.addObject(new Usuario());
         return mv;
     }
 
-    @PostMapping("/fazerLogin")
-    public String fazerLogin (Usuario usuario, Model model) {
-        if (loginService.logar(usuario)) {
-            if(loginService.verificarPermissao(usuario).equals("administrador")) {
-                return "index";
-            } else {
-                return "login";
-            }
+    @PostMapping("/fazerCadastro")
+    public String fazerCadastro(Usuario usuario, Model model){
+        if(loginService.verificaLogin(usuario)) {
+            model.addAttribute("erroCadastro", "erroCadastro");
         } else {
-            model.addAttribute("erroLogin", "erroLogin");
-            return "login";
+            cadastroService.salvar(usuario);
         }
+        return "cadastro";
     }
 }
