@@ -18,4 +18,8 @@ public class CadastroService {
         usuario.setLogin(usuario.getLogin());
         usuarioRepo.save(usuario);
     }
+
+    public boolean verificaLogin(Usuario usuario) {
+        return usuarioRepo.existsByLogin(usuario.getLogin());
+    }
 }

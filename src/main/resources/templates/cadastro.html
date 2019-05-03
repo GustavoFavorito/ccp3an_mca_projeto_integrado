@@ -21,15 +21,14 @@
                         <p>
                             <label for="usuario_cad">Usuario</label>
                             <input id="usuario_cad" name="usuario_cad" required="required" placeholder="usuario" th:field="*{login}"/>
-                            <script th:if="${erroCadastro != null}" class="erro">
-                                document.getElementById("usuario_cad").setCustomValidity("Usuario já cadastrado");
-                                document.getElementById("usuario_cad").reportValidity();
-                            </script>
                         </p>
 
                         <p>
                             <label for="senha_cad">Senha</label>
                             <input id="senha_cad" name="senha_cad" required="required" type="password" placeholder="senha" th:field="*{senha}"/>
+                            <span th:if="${erroCadastro != null}" style="color:red">
+                                usuario já cadastrado
+                            </span>
                         </p>
 
                         <p>
