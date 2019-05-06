@@ -15,35 +15,13 @@
 		<th:block layout:fragment="conteudo">
 		  
 	        <div id="noticia">
-	            <form method="post" action="" onsubmit="Checkfiles(this)"><br/>
-	                <fieldset>
-	                    <legend>Upload</legend>
-	                        <p> 
-	                            <label for="imagem_noticia">Selecione arquivo:</label>
-	                            <input type="file" id="imagem_noticia" name="imagem_noticia" accept="image/*" multiple ="" required="required"/>
-	                        </p>
-	                        <p> 
-	                            <label for="imagem_noticia">Nome:</label>
-	                            <input type="text" id="imagem_noticia" name="imagem_noticia" accept="image/*" multiple ="" required="required"/>
-	                        </p>
-	                        <p> 
-	                            <label for="imagem_noticia">Imagem </label>
-	                            <input type="radio" id="imagem_noticia" name="imagem_noticia" accept="image/*" multiple ="" required="required"/>
-	                            
-	                            <label for="imagem_noticia">Audio </label>
-	                            <input type="radio" id="imagem_noticia" name="imagem_noticia" accept="image/*" multiple ="" required="required"/>
-	                            
-	                            <label for="imagem_noticia">Video </label>
-	                            <input type="radio" id="imagem_noticia" name="imagem_noticia" accept="image/*" multiple ="" required="required"/>
-	                            
-	                            <label for="imagem_noticia">Texto </label>
-	                            <input type="radio" id="imagem_noticia" name="imagem_noticia" accept="image/*" multiple ="" required="required"/>
-	                        </p>
-	                        <p>
-	                        	 <button class="primary-button center block " id="botaoEnviar">Enviar</button>
-	                        </p>
-	                </fieldset>                
-	            </form>
+                <fieldset>
+	                <legend>Upload</legend>
+                    <form method="POST" enctype="multipart/form-data" action="upload">
+						<input type="file" name="file" />
+						<input type="submit" value="Upload" />
+					</form>
+	        	</fieldset>
 	        </div>
 		
 		</th:block>
