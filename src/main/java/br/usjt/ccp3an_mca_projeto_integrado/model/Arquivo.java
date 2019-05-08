@@ -14,7 +14,7 @@ public class Arquivo {
     private String extensao;
     private String caminho;
     @ManyToOne
-    private TipoDeAquivo tipoDeArquivo;
+    private TipoDeArquivo tipoDeArquivo;
 
     public Long getId() {
         return id;
@@ -48,11 +48,11 @@ public class Arquivo {
         this.caminho = caminho;
     }
 
-    public TipoDeAquivo getTipoDeArquivo() {
+    public TipoDeArquivo getTipoDeArquivo() {
         return tipoDeArquivo;
     }
 
-    public void setTipoDeArquivo(TipoDeAquivo tipoDeArquivo) {
+    public void setTipoDeArquivo(TipoDeArquivo tipoDeArquivo) {
         this.tipoDeArquivo = tipoDeArquivo;
     }
 }
