@@ -2,15 +2,12 @@ package br.usjt.ccp3an_mca_projeto_integrado.service;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.usjt.ccp3an_mca_projeto_integrado.model.Arquivo;
-import br.usjt.ccp3an_mca_projeto_integrado.model.TipoDeArquivo;
 import br.usjt.ccp3an_mca_projeto_integrado.model.repository.IArquivoRepository;
 
 @Service
@@ -20,7 +17,7 @@ public class ArquivoService implements IArquivoService{
 	IArquivoRepository arquivoRepo;
 	
 	@Autowired
-	ITipoDeArquivoService tipoDeArquivoService;
+	IExtensaoArquivoService extensaoArquivoService;
 	
 	public Arquivo guardar(MultipartFile multipartFile) throws IllegalStateException, IOException {
 		
@@ -29,13 +26,12 @@ public class ArquivoService implements IArquivoService{
 		
 		multipartFile.transferTo(new File(caminhoArquivo+nomeOriginal));
 		
-		String[] nomeDividido = nomeOriginal.replace(".", ";").split(";");
+		String extensao = extrairExtensao(nomeOriginal);
 		
 		Arquivo arquivo = new Arquivo();
 		arquivo.setCaminho(caminhoArquivo);
-		arquivo.setExtensao(nomeDividido[1]);
-		arquivo.setNome(nomeDividido[0]);
-		arquivo.setTipoDeArquivo(encontrarTipoDeArquivo(arquivo.getExtensao()));
+		arquivo.setExtensao(extensaoArquivoService.carregarPorDescricao(extensao));
+		arquivo.setNome(extrairNome(nomeOriginal, extensao));
 		
 		return arquivo;
 	}
@@ -44,14 +40,27 @@ public class ArquivoService implements IArquivoService{
 		arquivoRepo.save(arquivo);
 	}
 	
-	private TipoDeArquivo encontrarTipoDeArquivo(String extensao) {
-		Long id = (long) 0;
+	private String extrairExtensao(String nomeOriginal) {
 		
-		if(extensao.equals("jpg") || extensao.equals("png"))
-			id = (long)1;
-		else if(extensao.equals("mp3"))
-			id = (long)2;
+		String extensao = ""; 
+		Boolean capturar = false;
 		
-		return tipoDeArquivoService.carregar(id);
+		for(char l : nomeOriginal.toCharArray()){
+			
+			if(capturar) {
+				extensao += l;
+			}
+			
+			if(l == '.'){
+				extensao = "";
+				capturar = true;
+			}
+		}
+		
+		return extensao;
+	}
+	
+	private String extrairNome(String nomeOriginal, String extensao) {
+		return nomeOriginal.replace("."+extensao, "");
 	}
 }

@@ -11,10 +11,9 @@ public class Arquivo {
     @GeneratedValue
     private Long id;
     private String nome;
-    private String extensao;
     private String caminho;
     @ManyToOne
-    private TipoDeArquivo tipoDeArquivo;
+    private ExtensaoArquivo extensao;
 
     public Long getId() {
         return id;
@@ -32,27 +31,19 @@ public class Arquivo {
         this.nome = nome;
     }
 
-    public String getExtensao() {
-        return extensao;
-    }
+    public ExtensaoArquivo getExtensao() {
+		return extensao;
+	}
 
-    public void setExtensao(String extensao) {
-        this.extensao = extensao;
-    }
+	public void setExtensao(ExtensaoArquivo extensao) {
+		this.extensao = extensao;
+	}
 
-    public String getCaminho() {
+	public String getCaminho() {
         return caminho;
     }
 
     public void setCaminho(String caminho) {
         this.caminho = caminho;
-    }
-
-    public TipoDeArquivo getTipoDeArquivo() {
-        return tipoDeArquivo;
-    }
-
-    public void setTipoDeArquivo(TipoDeArquivo tipoDeArquivo) {
-        this.tipoDeArquivo = tipoDeArquivo;
     }
 }
