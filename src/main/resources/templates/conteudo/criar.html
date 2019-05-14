@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html 
+
+	xmlns="http://www.w3.org/1999/xhtml" 
+  	xmlns:th="http://www.thymeleaf.org" 
+  	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+>
+
+	<div th:replace="layout/base :: head">...</div>
+	
+	<body>
+		<div th:replace="layout/base :: header">...</div>
+			
+		<th:block layout:fragment="conteudo">
+		  
+	        <div id="noticia">
+                <fieldset>
+	                <legend>Arquivos</legend>
+						<div th:each="itemMap : ${arquivosPorTipoDeArquivo}">
+							<p th:text="${itemMap.key.descricao}"></p>
+							<div th:each="itemValue : ${itemMap.value}">
+								<p th:text="${itemValue.nome}"></p>
+							</div>
+						</div>
+	        	</fieldset>
+	        </div>
+		
+		</th:block>
+	
+		<div th:replace="layout/base :: footer">...</div>
+	</body>
+
+</html>
