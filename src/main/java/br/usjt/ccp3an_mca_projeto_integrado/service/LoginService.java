@@ -9,24 +9,13 @@ import org.springframework.stereotype.Service;
 public class LoginService {
 
     @Autowired
-    UsuarioRepository usuarioRepo;
+    private UsuarioRepository usuarioRepo;
 
     public String verificarPermissao(Usuario usuario) {
         return usuarioRepo.findByLoginQuery(usuario.getLogin()).getPermissao();
     }
 
-    public boolean verificaLogin(Usuario usuario) {
-        return usuarioRepo.existsByLogin(usuario.getLogin());
-    }
-
     public boolean logar (Usuario usuario) {
-        return usuarioRepo.findOneByLoginAndSenha(usuario.getLogin(),
-                usuario.getSenha()) != null;
-    }
-    
-    public void salvar(Usuario usuario) {
-        usuario.setSenha(usuario.getSenha());
-        usuario.setLogin(usuario.getLogin());
-        usuarioRepo.save(usuario);
+        return usuarioRepo.findOneByLoginAndSenha(usuario.getLogin(), usuario.getSenha()) != null;
     }
 }

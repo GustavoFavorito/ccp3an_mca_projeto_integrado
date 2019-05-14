@@ -11,31 +11,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class LoginController {
+public class CadastroController {
 
     @Autowired
     private LoginService loginService;
     @Autowired
     private CadastroService cadastroService;
 
-    @GetMapping (value = {"/login", "/"})
+    @GetMapping(value = {"/cadastro"})
     public ModelAndView login () {
-        ModelAndView mv = new ModelAndView ("login");
+        ModelAndView mv = new ModelAndView ("cadastro");
         mv.addObject(new Usuario());
         return mv;
     }
 
-    @PostMapping("/fazerLogin")
-    public String fazerLogin (Usuario usuario, Model model) {
-        if (loginService.logar(usuario)) {
-            if(loginService.verificarPermissao(usuario).equals("administrador")) {
-                return "index";
-            } else {
-                return "login";
-            }
+    @PostMapping("/fazerCadastro")
+    public String fazerCadastro(Usuario usuario, Model model){
+        if(cadastroService.verificaLogin(usuario)) {
+            model.addAttribute("erroCadastro", "erroCadastro");
+            return "cadastro";
         } else {
-            model.addAttribute("erroLogin", "erroLogin");
-            return "login";
+            cadastroService.salvar(usuario);
         }
+        return "login";
     }
 }
