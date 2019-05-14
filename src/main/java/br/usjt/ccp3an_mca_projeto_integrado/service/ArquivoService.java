@@ -2,12 +2,16 @@ package br.usjt.ccp3an_mca_projeto_integrado.service;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import br.usjt.ccp3an_mca_projeto_integrado.model.Arquivo;
+import br.usjt.ccp3an_mca_projeto_integrado.model.TipoDeArquivo;
 import br.usjt.ccp3an_mca_projeto_integrado.model.repository.IArquivoRepository;
 
 @Service
@@ -18,6 +22,9 @@ public class ArquivoService implements IArquivoService{
 	
 	@Autowired
 	IExtensaoArquivoService extensaoArquivoService;
+	
+	@Autowired
+	ITipoDeArquivoService tipoDeArquivoService;
 	
 	public Arquivo guardar(MultipartFile multipartFile) throws IllegalStateException, IOException {
 		
@@ -38,6 +45,17 @@ public class ArquivoService implements IArquivoService{
 	
 	public void inserir(Arquivo arquivo) {
 		arquivoRepo.save(arquivo);
+	}
+	
+	public Map<TipoDeArquivo, List<Arquivo>> carregarArquivosPorTipoDeArquivo(){
+		Map<TipoDeArquivo, List<Arquivo>> arquivosPorTipoDeArquivo = new HashMap<TipoDeArquivo,List<Arquivo>>();
+		List<TipoDeArquivo> listaTipoDeArquivo = tipoDeArquivoService.carregarTodos();
+		
+		for(TipoDeArquivo item:listaTipoDeArquivo) {
+			arquivosPorTipoDeArquivo.put(item, arquivoRepo.carregarArquivosPorTipoDeArquivo(item.getId()));
+		}
+		
+		return arquivosPorTipoDeArquivo;
 	}
 	
 	private String extrairExtensao(String nomeOriginal) {

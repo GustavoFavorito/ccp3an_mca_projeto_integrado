@@ -1,5 +1,7 @@
 package br.usjt.ccp3an_mca_projeto_integrado.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,11 @@ public class TipoDeArquivoService implements ITipoDeArquivoService {
 		}
 		
 		return null;
+	}
+
+	@Override
+	public List<TipoDeArquivo> carregarTodos() {
+		return tipoDeArquivoRepo.findAll();
 	}
 
 }
