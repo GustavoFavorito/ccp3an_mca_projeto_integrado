@@ -1,6 +1,8 @@
 package br.usjt.ccp3an_mca_projeto_integrado.model;
 
 import javax.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -8,7 +10,11 @@ public class Conteudo {
     @Id
     @GeneratedValue
     private Long id;
-    private String data;
+    private LocalDateTime data;
+    private String titulo;
+    private String descricao;
+    private String html;
+    private Boolean isPublico;
     @ManyToOne
     private Usuario usuario;
     @ManyToOne
@@ -26,15 +32,47 @@ public class Conteudo {
         this.id = id;
     }
 
-    public String getData() {
+    public LocalDateTime getData() {
         return data;
     }
 
-    public void setData(String data) {
+    public void setData(LocalDateTime data) {
         this.data = data;
     }
 
-    public Usuario getUsuario() {
+    public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getHtml() {
+		return html;
+	}
+
+	public void setHtml(String html) {
+		this.html = html;
+	}
+
+	public Boolean getIsPublico() {
+		return isPublico;
+	}
+
+	public void setIsPublico(Boolean isPublico) {
+		this.isPublico = isPublico;
+	}
+
+	public Usuario getUsuario() {
         return usuario;
     }
 

@@ -1054,12 +1054,12 @@ textarea.input {
 ===========================================================*/
 fieldset{
     display: block;
-    margin-inline-start: 220px;
-    margin-inline-end: 220px;
+    margin-inline-start: 15%;
+    margin-inline-end: 15%;
     padding-block-start: 0.35em;
     padding-inline-start: 0.75em;
-    padding-inline-end: 18.99em;
-    padding-block-end: 0.625em;
+    padding-inline-end: 0.75em;
+    padding-block-end: 0.35em;
     min-inline-size: min-content;
     border-width: 2px;
     border-style: groove;
@@ -1081,4 +1081,37 @@ legend {
     margin-top: 10px;
     margin-left: 390px;
     
+}
+
+.caixa-lista-arquivo ul{
+	float: left;
+	width: 20%;
+	margin: 0px 10px 0px 0px;	
+}
+
+.caixa-lista-arquivo p{
+	float:left;
+	margin: 0px 4px 0px 0px;
+}
+
+.box{
+	padding:0px 0px 20px 0px;
+}
+
+.box:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.radio-box input, .radio-box div{
+	float:left
+}
+
+.text-radio{
+	margin: 0px 2px 0px 10px;
+}
+
+.radio{
+	margin: 0px 0px 10px 0px;
 }
