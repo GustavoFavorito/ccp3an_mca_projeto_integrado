@@ -1,7 +1,5 @@
 package br.usjt.ccp3an_mca_projeto_integrado.controller;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -57,32 +55,11 @@ public class ConteudoController {
 	@PostMapping("criar")
 	public String criar(@RequestParam("titulo") String titulo, @RequestParam("descricao") String descricao, 
 							@RequestParam("arquivoId") Long arquivoId, @RequestParam("html") String html,
-							@RequestParam("categoriaId") Long categoriaId, @RequestParam("listaTagsId") String listaTagsId,
+							@RequestParam("categoriaId") Long categoriaId, @RequestParam("listaTagsId") List<Long> listaTagsId,
 							@RequestParam("tipoAcesso") Boolean tipoAcesso){
 		
-		Arquivo arquivo = new Arquivo();
-		arquivo.setId(arquivoId);
-		
-		Categoria categoria = new Categoria();
-		categoria.setId(categoriaId);
-		
-		List<Tag> listaTags = new ArrayList<Tag>();
-		for(String item:listaTagsId.split(","))
-		{
-			Tag tag = new Tag();
-			tag.setId(Long.parseLong(item));
-			listaTags.add(tag);
-		}
-		
-		Conteudo conteudo = new Conteudo();
-		conteudo.setTitulo(titulo);
-		conteudo.setDescricao(descricao);
-		conteudo.setArquivo(arquivo);
-		conteudo.setHtml(html);
-		conteudo.setCategoria(categoria);
-		conteudo.setTags(listaTags);
-		conteudo.setIsPublico(tipoAcesso);
-		conteudo.setData(LocalDateTime.now());
+		Conteudo conteudo = conteudoService.encapsular(titulo, descricao, arquivoId, html, categoriaId, 
+														listaTagsId, tipoAcesso);
 		
 		conteudoService.inserir(conteudo);
 		
