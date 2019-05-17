@@ -1,15 +1,11 @@
 package br.usjt.ccp3an_mca_projeto_integrado.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class ExtensaoArquivo {
-	
 	@Id
-    @GeneratedValue
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
 	private String descricao;
 	@ManyToOne
