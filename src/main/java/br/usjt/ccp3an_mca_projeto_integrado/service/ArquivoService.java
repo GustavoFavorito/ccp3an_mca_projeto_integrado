@@ -29,7 +29,7 @@ public class ArquivoService implements IArquivoService{
 	public Arquivo guardar(MultipartFile multipartFile) throws IllegalStateException, IOException {
 		
 		String nomeOriginal = multipartFile.getOriginalFilename();
-		String caminhoArquivo = "/home/vinribs/Documents/fileServer/";
+		String caminhoArquivo = "/home/ghostavo/Documents/fileServer/";
 		
 		multipartFile.transferTo(new File(caminhoArquivo+nomeOriginal));
 		
