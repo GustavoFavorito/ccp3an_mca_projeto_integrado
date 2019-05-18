@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
 		<meta charset="utf-8" />
@@ -19,8 +19,7 @@
 </head>
 
 <body>
-<body></body>
-
+(
 	<!-- CABECARIO -->
 	<header id="header">
 		<!-- Nav -->
@@ -46,21 +45,18 @@
 					<!-- /nav -->
 	
 					<!-- BOTÃO PESQUISA & TRANSIÇÃO -->
-					<div class="nav-btns">
-						<button class="aside-btn">
-							<i class="fa fa-bars"></i>
-						</button>
-						<button class="search-btn">
-							<i class="fa fa-search"></i>
-						</button>
-						<div class="search-form">
-							<input class="search-input" type="text" name="search"
-								placeholder="Digite sua pesquisa ..."></input>
-	
-							<button class="search-close">
-								<i class="fa fa-times"></i>
-							</button>
-						</div>
+					<div class="nav-btns" id="buscaConteudo">
+						<form action="/conteudo/busca-conteudo" method="post">
+<!--							<div class="search-form">-->
+<!--								<input class="search-input" type="text" name="search"-->
+<!--									   placeholder="Digite sua pesquisa ..."/>-->
+<!--								<button class="search-close">-->
+<!--									<i class="fa fa-times"></i>-->
+<!--								</button>-->
+<!--							</div>-->
+							<input class="search-inpu" type="text" name="descricao" autocomplete="off">
+							<input type="submit">
+						</form>
 					</div>
 					<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
 				</div>
@@ -115,7 +111,7 @@
 				<div class="col-md-6">
 					<div class="post post-thumb">
 						<a class="post-img" href="detalhes-noticias.html"><img
-							src="https://abrilveja.files.wordpress.com/2019/05/brasil-politica-jair-bolsonaro-20190430-003.jpg?quality=70&strip=info&w=1024" alt=""></img></a>
+								src="https://abrilveja.files.wordpress.com/2019/05/brasil-politica-jair-bolsonaro-20190430-003.jpg?quality=70&strip=info&w=1024" alt=""></img></a>
 						<div class="post-body">
 							<div class="post-meta">
 								<a class="post-category cat-2" href="politica-cat.html">Politica</a>
@@ -164,45 +160,13 @@
 										<h2>Noticias Recentes</h2>
 									</div>
 								</div>
-	
-								<!-- NOTICIA -->
+
 								<div class="col-md-12">
-									<div class="post">
-										<a class="post-img" href="detalhes-noticias.html"><img
-											src="https://www.torcedores.com/content/uploads/2019/01/corinthianspretemporada.png" alt=""></img></a>
-										<div class="post-body">
-											<div class="post-meta">
-												<a class="post-category cat-1" href="politica-cat.html">Esporte</a>
-												<span class="post-date">1 de janeiro, 2019</span>
-											</div>
-											<h3 class="post-title">
-												<a href="detalhes-noticias.html">Corinthians inicia
-													temporada 2019</a>
-											</h3>
-										</div>
+									<div class="post" th:each="conteudo : ${conteudos}">
+										<div th:text="*{conteudo.getHtml()}"></div>
 									</div>
 								</div>
-								<!-- NOTICIA -->
-	
-	
-								<!-- NOTICIA -->
-								<div class="col-md-12">
-									<div class="post">
-										<a class="post-img" href="detalhes-noticias.html"><img
-											src="https://icdn2.digitaltrends.com/image/iphone-xs-max-review-1-640x640.jpg" alt=""></img></a>
-										<div class="post-body">
-											<div class="post-meta">
-												<a class="post-category cat-4" href="politica-cat.html">Tecnologia</a>
-												<span class="post-date">1 de janeiro, 2019</span>
-											</div>
-											<h3 class="post-title">
-												<a href="detalhes-noticias.html">Apple lança novo Iphone</a>
-											</h3>
-										</div>
-									</div>
-								</div>
-								<!-- NOTICIA -->
-	
+
 								<div class="col-md-12">
 									<div class="section-row">
 										<button class="primary-button center-block">Ver Mais</button>

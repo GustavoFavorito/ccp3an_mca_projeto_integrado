@@ -10,4 +10,6 @@ public interface IConteudoService {
 	public Conteudo encapsular(String titulo, String descricao, Long arquivoId, String html, Long categoriaId,
 								List<Long> listaTagsId, Boolean tipoAcesso);
 	public String gerarHtml(String html, Arquivo arquivo, String descricao);
+	public List<Conteudo> buscaPorDescricao(String descricao);
+	public List<Conteudo> buscaPorCategoria(String categoria);
 }

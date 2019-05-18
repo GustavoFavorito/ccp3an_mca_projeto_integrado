@@ -110,8 +110,8 @@ public class ConteudoService implements IConteudoService{
 		return sb.toString();
 	}
 
-	public List<Conteudo> buscaPorDescricao(String frase) {
-		return conteudoRepo.buscaPorDescricao(frase);
+	public List<Conteudo> buscaPorDescricao(String descricao) {
+		return conteudoRepo.buscaPorDescricao(descricao);
 	}
 
 	public List<Conteudo> buscaPorCategoria(String categoria) {
