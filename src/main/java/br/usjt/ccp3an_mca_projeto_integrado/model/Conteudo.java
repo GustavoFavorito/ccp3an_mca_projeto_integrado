@@ -22,6 +22,7 @@ public class Conteudo {
     @ManyToMany
     private List<Tag> tags;
     @ManyToOne
+    @JoinColumn
     private Categoria categoria;
 
     public Long getId() {

@@ -1,9 +1,7 @@
 package br.usjt.ccp3an_mca_projeto_integrado.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Categoria {
@@ -11,6 +9,8 @@ public class Categoria {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private String descricao;
+    @OneToMany(mappedBy = "categoria")
+    private List<Conteudo> conteudos;
 
     public Long getId() {
         return id;
@@ -26,5 +26,13 @@ public class Categoria {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public List<Conteudo> getConteudos() {
+        return conteudos;
+    }
+
+    public void setConteudos(List<Conteudo> conteudos) {
+        this.conteudos = conteudos;
     }
 }
