@@ -14,13 +14,23 @@
 			
 		<th:block layout:fragment="conteudo">
 		  
-	        <div id="noticia">
+	        <div>
                 <fieldset>
-	                <legend>Upload</legend>
+	                <legend>Upload de Arquivos</legend>
                     <form method="POST" enctype="multipart/form-data" action="upload">
 						
 						<input type="file" name="file" />
 						<input type="submit" value="Upload" />
+						
+					</form>
+	        	</fieldset>
+	        	<fieldset>
+	                <legend>Registrar uma Transmissão ao vivo</legend>
+                    <form method="POST" action="registrar">
+						
+						Nome: <input type="text" name="nome" />
+						Link: <input type="text" name="link" />
+						<input type="submit" value="Registrar" />
 						
 					</form>
 	        	</fieldset>

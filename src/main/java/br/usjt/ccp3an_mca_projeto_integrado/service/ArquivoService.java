@@ -81,4 +81,18 @@ public class ArquivoService implements IArquivoService{
 	private String extrairNome(String nomeOriginal, String extensao) {
 		return nomeOriginal.replace("."+extensao, "");
 	}
+
+	public Arquivo carregarArquivoId(Long id) {
+		
+		return arquivoRepo.findById(id).get();
+	}
+
+	public Arquivo encapsularArquivoStreaming(String nome, String link) {
+		Arquivo arquivo = new Arquivo();
+		arquivo.setNome(nome);
+		arquivo.setCaminho(link);
+		arquivo.setExtensao(extensaoArquivoService.carregarPorDescricao("Streaming"));
+		
+		return arquivo;
+	}
 }

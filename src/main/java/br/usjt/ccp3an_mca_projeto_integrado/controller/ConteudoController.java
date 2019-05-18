@@ -58,6 +58,8 @@ public class ConteudoController {
 							@RequestParam("categoriaId") Long categoriaId, @RequestParam("listaTagsId") List<Long> listaTagsId,
 							@RequestParam("tipoAcesso") Boolean tipoAcesso){
 		
+		html = conteudoService.gerarHtml(html, arquivoService.carregarArquivoId(arquivoId), descricao);
+		
 		Conteudo conteudo = conteudoService.encapsular(titulo, descricao, arquivoId, html, categoriaId, 
 														listaTagsId, tipoAcesso);
 		

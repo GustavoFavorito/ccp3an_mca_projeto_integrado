@@ -14,4 +14,6 @@ public interface IArquivoService {
 	public Arquivo guardar(MultipartFile multipartFile) throws IllegalStateException, IOException;
 	public void inserir(Arquivo arquivo);
 	public Map<TipoDeArquivo, List<Arquivo>> carregarArquivosPorTipoDeArquivo();
+	public Arquivo carregarArquivoId(Long id);
+	public Arquivo encapsularArquivoStreaming(String nome, String link);
 }

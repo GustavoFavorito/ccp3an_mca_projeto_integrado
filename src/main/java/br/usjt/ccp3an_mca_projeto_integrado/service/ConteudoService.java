@@ -53,4 +53,61 @@ public class ConteudoService implements IConteudoService{
 		return conteudo;
 	}
 
+	public String gerarHtml(String html, Arquivo arquivo, String descricao) {
+		
+		if(html.contains("##arquivo##")) {
+			html = html.replace("##arquivo##", gerarTagArquivo(arquivo));
+		}
+		
+		if(html.contains("##descricao##")) {
+			html = html.replace("##descricao##", descricao);
+		}
+		
+		return html;
+	}
+	
+	private String gerarTagArquivo(Arquivo arquivo) {
+		StringBuilder tagHtml = new StringBuilder();
+		String tipoArquivo = arquivo.getExtensao().getTipoDeArquivo().getDescricao();
+		String caminhoComArquivo = gerarCaminhoComArquivo(arquivo);
+		
+		if(tipoArquivo.toLowerCase().equals("imagem")) {
+			tagHtml.append("<img src='");
+			tagHtml.append(caminhoComArquivo);
+			tagHtml.append("' >");  
+		}else if(tipoArquivo.toLowerCase().equals("video")){
+			tagHtml.append("<video controls> <source src='");
+			tagHtml.append(caminhoComArquivo);
+			tagHtml.append("' ></video>");
+		}else if(tipoArquivo.toLowerCase().equals("audio")){
+			tagHtml.append("<audio controls> <source src='");
+			tagHtml.append(caminhoComArquivo);
+			tagHtml.append("' ></audio>");
+		}else if(tipoArquivo.toLowerCase().equals("texto")){
+			tagHtml.append("<a href='");
+			tagHtml.append(caminhoComArquivo);
+			tagHtml.append("' >");
+			tagHtml.append(arquivo.getNome());
+			tagHtml.append("</a>");
+		}else if(tipoArquivo.toLowerCase().equals("streaming")){
+			tagHtml.append("<iframe src='");
+			tagHtml.append(arquivo.getCaminho());
+			tagHtml.append("' >");
+			tagHtml.append("</iframe> ");
+		}
+		
+		return tagHtml.toString();
+	}
+	
+	private String gerarCaminhoComArquivo(Arquivo arquivo) {
+		StringBuilder sb = new StringBuilder();
+		
+		sb.append(arquivo.getCaminho());
+		sb.append(arquivo.getNome());
+		sb.append(".");
+		sb.append(arquivo.getExtensao().getDescricao());
+		
+		return sb.toString();
+	}
+
 }

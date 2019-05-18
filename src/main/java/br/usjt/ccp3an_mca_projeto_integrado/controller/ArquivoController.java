@@ -39,4 +39,14 @@ public class ArquivoController {
 		
         return "arquivo/upload";
     }
+	
+	@PostMapping("registrar")
+	public String registrar(@RequestParam("nome") String nome, @RequestParam("link") String link) {
+		
+		Arquivo arquivo = arquivoService.encapsularArquivoStreaming(nome, link);
+		
+		arquivoService.inserir(arquivo);
+		
+		return "arquivo/upload";
+	}
 }
