@@ -8,7 +8,7 @@ import java.util.List;
 @Entity
 public class Conteudo {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime data;
     private String titulo;

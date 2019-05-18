@@ -1,15 +1,12 @@
 package br.usjt.ccp3an_mca_projeto_integrado.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Tag {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String nomeTag;
     @ManyToMany(mappedBy = "tags")
