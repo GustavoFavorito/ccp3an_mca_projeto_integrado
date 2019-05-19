@@ -1,8 +1,10 @@
 package br.usjt.ccp3an_mca_projeto_integrado.controller;
 
-import java.util.List;
-import java.util.Map;
-
+import br.usjt.ccp3an_mca_projeto_integrado.model.*;
+import br.usjt.ccp3an_mca_projeto_integrado.service.IArquivoService;
+import br.usjt.ccp3an_mca_projeto_integrado.service.ICategoriaService;
+import br.usjt.ccp3an_mca_projeto_integrado.service.IConteudoService;
+import br.usjt.ccp3an_mca_projeto_integrado.service.ITagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,15 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import br.usjt.ccp3an_mca_projeto_integrado.model.Arquivo;
-import br.usjt.ccp3an_mca_projeto_integrado.model.Categoria;
-import br.usjt.ccp3an_mca_projeto_integrado.model.Conteudo;
-import br.usjt.ccp3an_mca_projeto_integrado.model.Tag;
-import br.usjt.ccp3an_mca_projeto_integrado.model.TipoDeArquivo;
-import br.usjt.ccp3an_mca_projeto_integrado.service.IArquivoService;
-import br.usjt.ccp3an_mca_projeto_integrado.service.ICategoriaService;
-import br.usjt.ccp3an_mca_projeto_integrado.service.IConteudoService;
-import br.usjt.ccp3an_mca_projeto_integrado.service.ITagService;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("conteudo")
@@ -66,5 +62,14 @@ public class ConteudoController {
 		conteudoService.inserir(conteudo);
 		
 		return "conteudo/exibir";
+	}
+
+	@PostMapping("/busca-conteudo")
+	public ModelAndView buscarConteudo(String descricao) {
+		ModelAndView mv = new ModelAndView("index");
+		mv.addObject(new Conteudo());
+		List<Conteudo> conteudos = conteudoService.buscaPorDescricao(descricao);
+		mv.addObject("conteudos", conteudos);
+		return mv;
 	}
 }
