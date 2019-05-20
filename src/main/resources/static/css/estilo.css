@@ -1085,7 +1085,7 @@ legend {
 
 .caixa-lista-arquivo ul{
 	float: left;
-	width: 20%;
+	width: 15%;
 	margin: 0px 10px 0px 0px;	
 }
 
@@ -1114,4 +1114,8 @@ legend {
 
 .radio{
 	margin: 0px 0px 10px 0px;
+}
+
+.preview img, .preview iframe, .preview a, .preview audio, .preview video{
+	width: 50%;
 }
