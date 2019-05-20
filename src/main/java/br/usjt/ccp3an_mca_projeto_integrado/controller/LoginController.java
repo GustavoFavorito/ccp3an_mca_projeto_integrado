@@ -9,24 +9,27 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class LoginController {
 
     @Autowired
     private LoginService loginService;
 
-    @GetMapping (value = {"/login", "/"})
+    @GetMapping (value = {"/login", "/fazerLogin"})
     public ModelAndView login () {
         ModelAndView mv = new ModelAndView ("login");
         mv.addObject(new Usuario());
         return mv;
     }
 
-    @PostMapping("/fazerLogin")
-    public String fazerLogin (Usuario usuario, Model model) {
+    @PostMapping({"/login", "/fazerLogin"})
+    public String fazerLogin (HttpServletRequest request, Usuario usuario, Model model) {
         if (loginService.logar(usuario)) {
             if(loginService.verificarPermissao(usuario).equals("administrador")) {
-                return "index";
+                request.getSession().setAttribute("usuarioLogado", usuario);
+                return "redirect:/";
             } else {
                 return "login";
             }

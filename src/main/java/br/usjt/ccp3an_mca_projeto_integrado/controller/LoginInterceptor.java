@@ -13,8 +13,8 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
                              HttpServletResponse response, Object handler)
             throws Exception {
 
-//        HttpSession session = request.getSession();
-//        if(session.getAttribute("usuarioLogado")
+        HttpSession session = request.getSession();
+        if(session.getAttribute("usuarioLogado") == null) response.sendRedirect("/login");
         return true;
     }
 }

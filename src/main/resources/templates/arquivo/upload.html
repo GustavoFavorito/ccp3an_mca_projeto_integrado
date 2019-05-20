@@ -19,8 +19,13 @@
 	                <legend>Upload de Arquivos</legend>
                     <form method="POST" enctype="multipart/form-data" action="upload">
 						
-						<input type="file" name="file" />
-						<input type="submit" value="Upload" />
+						<div class="box">
+							<input type="file" name="file" />
+						</div>
+						
+						<div class="box">
+							<input type="submit" value="Upload" />
+						</div>
 						
 					</form>
 	        	</fieldset>
@@ -28,9 +33,16 @@
 	                <legend>Registrar uma Transmissão ao vivo</legend>
                     <form method="POST" action="registrar">
 						
-						Nome: <input type="text" name="nome" />
-						Link: <input type="text" name="link" />
-						<input type="submit" value="Registrar" />
+						<div class="box">
+							Nome: <input type="text" name="nome" />
+						</div>
+						<div class="box">
+							Link: <input type="text" name="link" />
+						</div>
+						
+						<div class="box">
+							<input type="submit" value="Registrar" />
+						</div>
 						
 					</form>
 	        	</fieldset>

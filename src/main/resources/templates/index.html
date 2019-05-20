@@ -2,20 +2,17 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
-    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
-			rel="stylesheet" />
-    <link href="/css/style.css" rel="stylesheet" />
-    <link href="css/Pag-Inicial.css" rel="stylesheet" />
-    <link
-			href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600"
-			rel="stylesheet" />
-    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link type="text/css" rel="stylesheet" href="/css/estilo.css" />
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+<!--	<link type="text/css" rel="stylesheet" th:href="@{css/style.css}"/>-->
+<!--	<link type="text/css" rel="stylesheet" th:href="@{css/Pag-Inicial.css}"/>-->
+<!--	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/>-->
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/font-awesome.min.css}"/>
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/estilo.css}"/>
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+	<title>Media Center</title>
 </head>
 
 <body>
@@ -28,40 +25,54 @@
 				<div class="container">
 					<!-- TITULO -->
 					<div class="nav-logo">
-						<a href="index.html" class="logo">SOCIALMEDIA</a>
+						<a href="#" class="logo">SOCIAL MEDIA</a>
 					</div>
 					<!-- /TITULO -->
-
+	
 					<!-- nav -->
 					<ul class="nav-menu nav navbar-nav">
 						<li><a href="#">Noticias</a></li>
 						<li><a href="#">Popular</a></li>
-						<li class="cat-1"><a href="#">Esportes</a></li>
-						<li class="cat-2"><a href="politica-cat.html">Politica</a></li>
-						<li class="cat-3"><a href="#">Tecnologia</a></li>
-						<li class="cat-4"><a href="#">Jornal</a></li>
+						<li th:each="categoria, iStat : ${categorias}" th:class="'cat-'+${iStat.count}">
+							<a href="#" th:text="*{categoria.getDescricao()}"></a>
+						</li>
 					</ul>
 					<!-- /nav -->
-
+	
 					<!-- BOTÃO PESQUISA & TRANSIÇÃO -->
 					<div class="nav-btns" id="buscaConteudo">
-						<form action="/conteudo/busca-conteudo" method="post">
-<!--							<div class="search-form">-->
-<!--								<input class="search-input" type="text" name="search"-->
-<!--									   placeholder="Digite sua pesquisa ..."/>-->
-<!--								<button class="search-close">-->
-<!--									<i class="fa fa-times"></i>-->
-<!--								</button>-->
-<!--							</div>-->
-							<input class="search-inpu" type="text" name="descricao" autocomplete="off">
+						<form action="/conteudo/busca" method="post">
+							<div class="search-form">
+								<input class="search-input" type="text" name="search"
+									   placeholder="Digite sua pesquisa"/>
+								<button class="search-close">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+							<input class="search-input" type="text" name="descricao" autocomplete="off">
 							<input type="submit">
 						</form>
+
+					</div>
+					<div class="nav-btns">
+						<button class="aside-btn">
+							<i class="fa fa-bars"></i>
+						</button>
+						<button class="search-btn">
+							<i class="fa fa-search"></i>
+						</button>
+						<div class="search-form">
+							<input class="search-input" type="text" name="search" placeholder="Digite sua pesquisa">
+							<button class="search-close">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>
 					</div>
 					<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
 				</div>
 			</div>
 			<!-- /MENU SEPERIOR Nav -->
-
+	
 			<!-- MENU LATERAL Nav -->
 			<div id="nav-aside">
 				<!-- nav -->
@@ -75,7 +86,7 @@
 					</ul>
 				</div>
 				<!-- /nav -->
-
+	
 				<!-- MEDIA SOCIAS -->
 				<div class="section-row">
 					<h3>Siga-nos</h3>
@@ -87,7 +98,7 @@
 					</ul>
 				</div>
 				<!-- /MEDIA SOCIAS -->
-
+	
 				<!-- FECHAR MENU LATERAL Nav -->
 				<button class="nav-aside-close">
 					<i class="fa fa-times"></i>
@@ -99,7 +110,7 @@
 		<!-- /Nav -->
 	</header>
 	<!-- /CABECARIO -->
-
+	
 	<!-- section -->
 	<div class="section">
 		<!-- container -->
@@ -109,8 +120,8 @@
 				<!-- NOTICIA PRINCIAPAL1 -->
 				<div class="col-md-6">
 					<div class="post post-thumb">
-						<a class="post-img" href="detalhes-noticias.html"><img
-								src="https://abrilveja.files.wordpress.com/2019/05/brasil-politica-jair-bolsonaro-20190430-003.jpg?quality=70&strip=info&w=1024" alt=""></img></a>
+						<a class="post-img" href="detalhes-noticias.html">
+                            <img th:src="@{~/imagens/jair-bolsonaro.jpg}"></a>
 						<div class="post-body">
 							<div class="post-meta">
 								<a class="post-category cat-2" href="politica-cat.html">Politica</a>
@@ -124,12 +135,13 @@
 					</div>
 				</div>
 				<!-- /NOTICIA PRINCIAPAL1 -->
-
+	
 				<!-- NOTICIA PRINCIAPAL2 -->
 				<div class="col-md-6">
 					<div class="post post-thumb">
-						<a class="post-img" href="detalhes-noticias.html"><img
-							src="https://specials-images.forbesimg.com/imageserve/1136864094/960x0.jpg?fit=scale" alt=""></img></a>
+						<a class="post-img" href="detalhes-noticias.html">
+							<img th:src="@{~/imagens/google.jpg}">
+						</a>
 						<div class="post-body">
 							<div class="post-meta">
 								<a class="post-category cat-4" href="politica-cat.html">Tecnologia</a>
@@ -145,7 +157,7 @@
 				<!-- /NOTICIA PRINCIAPAL2 -->
 			</div>
 			<!-- /row -->
-
+	
 			<!-- section -->
 			<div class="section">
 				<!-- container -->
@@ -162,7 +174,7 @@
 
 								<div class="col-md-12">
 									<div class="post" th:each="conteudo : ${conteudos}">
-										<div th:text="*{conteudo.getHtml()}"></div>
+										<div th:utext="*{conteudo.getHtml()}"></div>
 									</div>
 								</div>
 
@@ -173,9 +185,9 @@
 								</div>
 							</div>
 						</div>
-
+	
 						<div class="col-md-4">
-
+	
 							<!-- CATEGORIAS SUBMENU -->
 							<div class="aside-widget">
 								<div class="section-title">
@@ -191,7 +203,7 @@
 								</div>
 							</div>
 							<!-- /CATEGORIAS SUBMENU -->
-
+	
 							<!-- TAGS -->
 							<div class="aside-widget">
 								<div class="tags-widget">
@@ -215,17 +227,17 @@
 				<!-- /container -->
 			</div>
 			<!-- /section -->
-
-
+	
+	
 		</div>
 		<!-- /container -->
 	</div>
 	<!-- /section -->
-
-
-
-
-
+	
+	
+	
+	
+	
 	<!-- RODAPÉ -->
 	<footer id="footer">
 		<!-- container -->
@@ -237,7 +249,7 @@
 						<div class="footer-logo">
 							<a href="index.html" class="logo">SOCIALMEDIA</a>
 						</div>
-
+	
 						<div class="footer-copyright">
 							<span>&copy;Copyright &copy;<script>document.write(new Date().getFullYear());</script>
 								Todos os direitos reservados
@@ -245,7 +257,7 @@
 						</div>
 					</div>
 				</div>
-
+	
 				<div class="col-md-4">
 					<div class="row">
 						<div class="col-md-6">
@@ -269,14 +281,28 @@
 						</div>
 					</div>
 				</div>
+	
+				<div class="col-md-3"><meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
+			rel="stylesheet" />
+    <link href="/css/style.css" rel="stylesheet" />
+    <link href="css/Pag-Inicial.css" rel="stylesheet" />
+    <link
+			href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600"
+			rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link type="text/css" rel="stylesheet" href="/css/estilo.css" />
 
-				<div class="col-md-3">
 					<div class="footer-widget">
 						<h3 class="footer-title">Receba nossas atualizações</h3>
 						<div class="footer-newsletter">
 							<form>
 								<input class="input" type="email" name="newsletter"
-									placeholder="Digite seu e-mail"></input>
+									placeholder="Digite seu e-mail">
 								<button class="newsletter-btn">
 									<i class="fa fa-paper-plane"></i>
 								</button>
@@ -290,17 +316,17 @@
 						</ul>
 					</div>
 				</div>
-
+	
 			</div>
 			<!-- /row -->
 		</div>
 		<!-- /container -->
 	</footer>
 	<!-- /RODAPÉ -->
-
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
-
+	
+	<script th:src="@{~/js/jquery.min.js}"></script>
+	<script th:src="@{~/js/bootstrap.min.js}"></script>
+	<script th:src="@{~/js/main.js}"></script>
+<!--	-->
 </body>
 </html>
