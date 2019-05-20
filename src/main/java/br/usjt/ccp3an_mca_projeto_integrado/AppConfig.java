@@ -16,7 +16,7 @@ public class AppConfig implements WebMvcConfigurer {
         registry.addInterceptor(
                 new LoginInterceptor()).
                 addPathPatterns("/**").
-                excludePathPatterns("/login", "/", "/fazerLogin");
+                excludePathPatterns("/login", "/fazerLogin", "/css/**");
     }
     
     private static final String[] CLASSPATH_RESOURCE_LOCATIONS = {
