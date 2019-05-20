@@ -2,24 +2,20 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-		<meta charset="utf-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<meta name="viewport" content="width=device-width, user-scalable=no" />
-		<link href="/webjars/bootstrap/4.0.0/css/bootstrap.min.css"
-			rel="stylesheet" />
-		<link href="/css/style.css" rel="stylesheet" />
-		<link href="css/Pag-Inicial.css" rel="stylesheet" />
-		<link
-			href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600"
-			rel="stylesheet" />
-		<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/font-awesome.min.css" />
-		<link type="text/css" rel="stylesheet" href="/css/estilo.css" />
+	<meta charset="utf-8"/>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<meta name="viewport" content="width=device-width, user-scalable=no"/>
+<!--	<link type="text/css" rel="stylesheet" th:href="@{css/style.css}"/>-->
+<!--	<link type="text/css" rel="stylesheet" th:href="@{css/Pag-Inicial.css}"/>-->
+	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/>
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/font-awesome.min.css}"/>
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/estilo.css}"/>
+	<link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+	<title>Media Center</title>
 </head>
 
 <body>
-(
 	<!-- CABECARIO -->
 	<header id="header">
 		<!-- Nav -->
@@ -29,7 +25,7 @@
 				<div class="container">
 					<!-- TITULO -->
 					<div class="nav-logo">
-						<a href="index.html" class="logo">SOCIALMEDIA</a>
+						<a href="#" class="logo">SOCIAL MEDIA</a>
 					</div>
 					<!-- /TITULO -->
 	
@@ -45,18 +41,32 @@
 					<!-- /nav -->
 	
 					<!-- BOTÃO PESQUISA & TRANSIÇÃO -->
-					<div class="nav-btns" id="buscaConteudo">
-						<form action="/conteudo/busca-conteudo" method="post">
+<!--					<div class="nav-btns" id="buscaConteudo">-->
+<!--						<form action="/conteudo/busca-conteudo" method="post">-->
 <!--							<div class="search-form">-->
 <!--								<input class="search-input" type="text" name="search"-->
-<!--									   placeholder="Digite sua pesquisa ..."/>-->
+<!--									   placeholder="Digite sua pesquisa"/>-->
 <!--								<button class="search-close">-->
 <!--									<i class="fa fa-times"></i>-->
 <!--								</button>-->
 <!--							</div>-->
-							<input class="search-inpu" type="text" name="descricao" autocomplete="off">
-							<input type="submit">
-						</form>
+<!--							<input class="search-input" type="text" name="descricao" autocomplete="off">-->
+<!--							<input type="submit">-->
+<!--						</form>-->
+<!--					</div>-->
+					<div class="nav-btns">
+						<button class="aside-btn">
+							<i class="fa fa-bars"></i>
+						</button>
+						<button class="search-btn">
+							<i class="fa fa-search"></i>
+						</button>
+						<div class="search-form">
+							<input class="search-input" type="text" name="search" placeholder="Digite sua pesquisa">
+							<button class="search-close">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>
 					</div>
 					<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
 				</div>
@@ -111,7 +121,7 @@
 				<div class="col-md-6">
 					<div class="post post-thumb">
 						<a class="post-img" href="detalhes-noticias.html"><img
-								src="https://abrilveja.files.wordpress.com/2019/05/brasil-politica-jair-bolsonaro-20190430-003.jpg?quality=70&strip=info&w=1024" alt=""></img></a>
+								src="https://abrilveja.files.wordpress.com/2019/05/brasil-politica-jair-bolsonaro-20190430-003.jpg?quality=70&strip=info&w=1024"></a>
 						<div class="post-body">
 							<div class="post-meta">
 								<a class="post-category cat-2" href="politica-cat.html">Politica</a>
@@ -130,7 +140,7 @@
 				<div class="col-md-6">
 					<div class="post post-thumb">
 						<a class="post-img" href="detalhes-noticias.html"><img
-							src="https://specials-images.forbesimg.com/imageserve/1136864094/960x0.jpg?fit=scale" alt=""></img></a>
+							src="https://specials-images.forbesimg.com/imageserve/1136864094/960x0.jpg?fit=scale" alt=""></a>
 						<div class="post-body">
 							<div class="post-meta">
 								<a class="post-category cat-4" href="politica-cat.html">Tecnologia</a>
@@ -277,7 +287,7 @@
 						<div class="footer-newsletter">
 							<form>
 								<input class="input" type="email" name="newsletter"
-									placeholder="Digite seu e-mail"></input>
+									placeholder="Digite seu e-mail">
 								<button class="newsletter-btn">
 									<i class="fa fa-paper-plane"></i>
 								</button>
@@ -299,9 +309,9 @@
 	</footer>
 	<!-- /RODAPÉ -->
 	
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/main.js"></script>
-	
+	<script th:src="@{~/js/jquery.min.js}"></script>
+	<script th:src="@{~/js/bootstrap.min.js}"></script>
+	<script th:src="@{~/js/main.js}"></script>
+<!--	-->
 </body>
 </html>
