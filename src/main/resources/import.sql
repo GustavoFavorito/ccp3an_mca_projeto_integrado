@@ -20,10 +20,10 @@ INSERT INTO extensao_arquivo VALUES (NULL, 'aac', 3);
 INSERT INTO extensao_arquivo VALUES (NULL, 'txt', 4);
 INSERT INTO extensao_arquivo VALUES (NULL, 'streaming', 5);
 
-INSERT INTO categoria VALUES (NULL, 'Esporte');
-INSERT INTO categoria VALUES (NULL, 'Tecnologia');
-INSERT INTO categoria VALUES (NULL, 'Politica');
-INSERT INTO categoria VALUES (NULL, 'Educação');
+INSERT INTO categoria VALUES (1, 'Esporte');
+INSERT INTO categoria VALUES (2, 'Tecnologia');
+INSERT INTO categoria VALUES (3, 'Politica');
+INSERT INTO categoria VALUES (4, 'Educação');
 
 INSERT INTO tag VALUES (NULL, 'Google');
 INSERT INTO tag VALUES (NULL, 'Facebook');

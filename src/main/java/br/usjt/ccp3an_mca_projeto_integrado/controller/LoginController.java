@@ -22,7 +22,7 @@ public class LoginController {
         return mv;
     }
 
-    @PostMapping("/fazerLogin")
+    @PostMapping({"/login", "/"})
     public String fazerLogin (Usuario usuario, Model model) {
         if (loginService.logar(usuario)) {
             if(loginService.verificarPermissao(usuario).equals("administrador")) {

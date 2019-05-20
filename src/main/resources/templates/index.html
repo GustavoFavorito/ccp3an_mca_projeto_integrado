@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, user-scalable=no"/>
 <!--	<link type="text/css" rel="stylesheet" th:href="@{css/style.css}"/>-->
 <!--	<link type="text/css" rel="stylesheet" th:href="@{css/Pag-Inicial.css}"/>-->
-	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/>
+<!--	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/>-->
 	<link type="text/css" rel="stylesheet" th:href="@{~/css/font-awesome.min.css}"/>
 	<link type="text/css" rel="stylesheet" th:href="@{~/css/estilo.css}"/>
 	<link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
@@ -24,13 +24,14 @@
 			<div id="nav-fixed">
 				<div class="container">
 					<!-- TITULO -->
-					<div class="nav-logo">
-						<a href="#" class="logo">SOCIAL MEDIA</a>
-					</div>
+<!--					<div class="nav-logo">-->
+<!--						<a href="#" class="logo">SOCIAL MEDIA</a>-->
+<!--					</div>-->
 					<!-- /TITULO -->
 	
 					<!-- nav -->
 					<ul class="nav-menu nav navbar-nav">
+						<li><a href="#" class="logo">SOCIAL MEDIA</a></li>
 						<li><a href="#">Noticias</a></li>
 						<li><a href="#">Popular</a></li>
 						<li class="cat-1"><a href="#">Esportes</a></li>
@@ -41,34 +42,31 @@
 					<!-- /nav -->
 	
 					<!-- BOTÃO PESQUISA & TRANSIÇÃO -->
-					<div class="nav-btns" id="buscaConteudo">
-						<form action="/conteudo/busca" method="post">
-							<div class="search-form">
-								<input class="search-input" type="text" name="search"
-									   placeholder="Digite sua pesquisa"/>
-								<button class="search-close">
-									<i class="fa fa-times"></i>
-								</button>
-							</div>
-							<input class="search-input" type="text" name="descricao" autocomplete="off">
-							<input type="submit">
-						</form>
-
-					</div>
+<!--					<div class="nav-btns" id="buscaConteudo">-->
+<!--						<form action="/conteudo/busca-conteudo" method="post">-->
+<!--							<div class="search-form">-->
+<!--								<input class="search-input" type="text" name="search"-->
+<!--									   placeholder="Digite sua pesquisa"/>-->
+<!--								<button class="search-close">-->
+<!--									<i class="fa fa-times"></i>-->
+<!--								</button>-->
+<!--							</div>-->
+<!--							<input class="search-input" type="text" name="descricao" autocomplete="off">-->
+<!--							<input type="submit">-->
+<!--						</form>-->
+<!--					</div>-->
+					<form>
 					<div class="nav-btns">
+
+						<input class="search-input" type="text" name="search" placeholder="Digite sua pesquisa">
+							<button class="search-btn">
+								<i class="fa fa-search"></i>
+							</button>
 						<button class="aside-btn">
 							<i class="fa fa-bars"></i>
 						</button>
-						<button class="search-btn">
-							<i class="fa fa-search"></i>
-						</button>
-						<div class="search-form">
-							<input class="search-input" type="text" name="search" placeholder="Digite sua pesquisa">
-							<button class="search-close">
-								<i class="fa fa-times"></i>
-							</button>
-						</div>
 					</div>
+					</form>
 					<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
 				</div>
 			</div>
@@ -121,8 +119,8 @@
 				<!-- NOTICIA PRINCIAPAL1 -->
 				<div class="col-md-6">
 					<div class="post post-thumb">
-						<a class="post-img" href="detalhes-noticias.html"><img
-								src="https://abrilveja.files.wordpress.com/2019/05/brasil-politica-jair-bolsonaro-20190430-003.jpg?quality=70&strip=info&w=1024"></a>
+						<a class="post-img" href="detalhes-noticias.html">
+                            <img th:src="@{~/imagens/jair-bolsonaro.jpg}"></a>
 						<div class="post-body">
 							<div class="post-meta">
 								<a class="post-category cat-2" href="politica-cat.html">Politica</a>
@@ -140,8 +138,9 @@
 				<!-- NOTICIA PRINCIAPAL2 -->
 				<div class="col-md-6">
 					<div class="post post-thumb">
-						<a class="post-img" href="detalhes-noticias.html"><img
-							src="https://specials-images.forbesimg.com/imageserve/1136864094/960x0.jpg?fit=scale" alt=""></a>
+						<a class="post-img" href="detalhes-noticias.html">
+							<img th:src="@{~/imagens/google.jpg}">
+						</a>
 						<div class="post-body">
 							<div class="post-meta">
 								<a class="post-category cat-4" href="politica-cat.html">Tecnologia</a>
@@ -174,7 +173,7 @@
 
 								<div class="col-md-12">
 									<div class="post" th:each="conteudo : ${conteudos}">
-										<div th:utext="*{conteudo.getHtml()}"></div>
+										<div th:text="*{conteudo.getHtml()}"></div>
 									</div>
 								</div>
 
