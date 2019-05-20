@@ -13,6 +13,7 @@ public class Conteudo {
     private LocalDateTime data;
     private String titulo;
     private String descricao;
+    @Column(length=1000)
     private String html;
     private Boolean isPublico;
     @ManyToOne

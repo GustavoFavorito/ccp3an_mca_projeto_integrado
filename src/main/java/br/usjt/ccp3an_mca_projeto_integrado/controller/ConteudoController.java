@@ -1,5 +1,6 @@
 package br.usjt.ccp3an_mca_projeto_integrado.controller;
 
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
 
@@ -53,10 +54,10 @@ public class ConteudoController {
     }
 	
 	@PostMapping("criar")
-	public String criar(@RequestParam("titulo") String titulo, @RequestParam("descricao") String descricao, 
+	public ModelAndView criar(@RequestParam("titulo") String titulo, @RequestParam("descricao") String descricao, 
 							@RequestParam("arquivoId") Long arquivoId, @RequestParam("html") String html,
 							@RequestParam("categoriaId") Long categoriaId, @RequestParam("listaTagsId") List<Long> listaTagsId,
-							@RequestParam("tipoAcesso") Boolean tipoAcesso){
+							@RequestParam("tipoAcesso") Boolean tipoAcesso) throws FileNotFoundException{
 		
 		html = conteudoService.gerarHtml(html, arquivoService.carregarArquivoId(arquivoId), descricao);
 		
@@ -65,6 +66,10 @@ public class ConteudoController {
 		
 		conteudoService.inserir(conteudo);
 		
-		return "conteudo/exibir";
+		ModelAndView mv = new ModelAndView("conteudo/exibir");
+		mv.addObject("html", conteudo.getHtml());
+		mv.addObject("titulo", conteudo.getTitulo());
+		
+		return mv;
 	}
 }
