@@ -34,7 +34,8 @@
 						<li><a href="#">Noticias</a></li>
 						<li><a href="#">Popular</a></li>
 						<li th:each="categoria, iStat : ${categorias}" th:class="'cat-'+${iStat.count}">
-							<a href="#" th:text="*{categoria.getDescricao()}"></a>
+                                <a href="#" th:href="@{/conteudo/busca_categoria/{categoria}(categoria=${categoria.getDescricao()})}"
+                                   th:text="*{categoria.getDescricao()}"></a>
 						</li>
 					</ul>
 					<!-- /nav -->

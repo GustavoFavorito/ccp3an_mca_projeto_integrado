@@ -11,10 +11,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -73,6 +70,15 @@ public class ConteudoController {
 		ModelAndView mv = new ModelAndView("index");
 		mv.addObject(new Conteudo());
 		List<Conteudo> conteudos = conteudoService.buscaPorDescricao(descricao);
+		mv.addObject("conteudos", conteudos);
+		return mv;
+	}
+
+	@GetMapping("/busca_categoria/{categoria}")
+	public ModelAndView buscaPorCategoria(@PathVariable String categoria) {
+		ModelAndView mv = new ModelAndView("index");
+		mv.addObject(new Conteudo());
+		List<Conteudo> conteudos = conteudoService.buscaPorCategoria(categoria);
 		mv.addObject("conteudos", conteudos);
 		return mv;
 	}
