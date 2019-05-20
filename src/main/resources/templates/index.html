@@ -24,49 +24,50 @@
 			<div id="nav-fixed">
 				<div class="container">
 					<!-- TITULO -->
-<!--					<div class="nav-logo">-->
-<!--						<a href="#" class="logo">SOCIAL MEDIA</a>-->
-<!--					</div>-->
+					<div class="nav-logo">
+						<a href="#" class="logo">SOCIAL MEDIA</a>
+					</div>
 					<!-- /TITULO -->
 	
 					<!-- nav -->
 					<ul class="nav-menu nav navbar-nav">
-						<li><a href="#" class="logo">SOCIAL MEDIA</a></li>
 						<li><a href="#">Noticias</a></li>
 						<li><a href="#">Popular</a></li>
-						<li class="cat-1"><a href="#">Esportes</a></li>
-						<li class="cat-2"><a href="politica-cat.html">Politica</a></li>
-						<li class="cat-3"><a href="#">Tecnologia</a></li>
-						<li class="cat-4"><a href="#">Jornal</a></li>
+						<li th:each="categoria, iStat : ${categorias}" th:class="'cat-'+${iStat.count}">
+							<a href="#" th:text="*{categoria.getDescricao()}"></a>
+						</li>
 					</ul>
 					<!-- /nav -->
 	
 					<!-- BOTÃO PESQUISA & TRANSIÇÃO -->
-<!--					<div class="nav-btns" id="buscaConteudo">-->
-<!--						<form action="/conteudo/busca-conteudo" method="post">-->
-<!--							<div class="search-form">-->
-<!--								<input class="search-input" type="text" name="search"-->
-<!--									   placeholder="Digite sua pesquisa"/>-->
-<!--								<button class="search-close">-->
-<!--									<i class="fa fa-times"></i>-->
-<!--								</button>-->
-<!--							</div>-->
-<!--							<input class="search-input" type="text" name="descricao" autocomplete="off">-->
-<!--							<input type="submit">-->
-<!--						</form>-->
-<!--					</div>-->
-					<form>
-					<div class="nav-btns">
+					<div class="nav-btns" id="buscaConteudo">
+						<form action="/conteudo/busca" method="post">
+							<div class="search-form">
+								<input class="search-input" type="text" name="search"
+									   placeholder="Digite sua pesquisa"/>
+								<button class="search-close">
+									<i class="fa fa-times"></i>
+								</button>
+							</div>
+							<input class="search-input" type="text" name="descricao" autocomplete="off">
+							<input type="submit">
+						</form>
 
-						<input class="search-input" type="text" name="search" placeholder="Digite sua pesquisa">
-							<button class="search-btn">
-								<i class="fa fa-search"></i>
-							</button>
+					</div>
+					<div class="nav-btns">
 						<button class="aside-btn">
 							<i class="fa fa-bars"></i>
 						</button>
+						<button class="search-btn">
+							<i class="fa fa-search"></i>
+						</button>
+						<div class="search-form">
+							<input class="search-input" type="text" name="search" placeholder="Digite sua pesquisa">
+							<button class="search-close">
+								<i class="fa fa-times"></i>
+							</button>
+						</div>
 					</div>
-					</form>
 					<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
 				</div>
 			</div>
@@ -173,7 +174,7 @@
 
 								<div class="col-md-12">
 									<div class="post" th:each="conteudo : ${conteudos}">
-										<div th:text="*{conteudo.getHtml()}"></div>
+										<div th:utext="*{conteudo.getHtml()}"></div>
 									</div>
 								</div>
 
