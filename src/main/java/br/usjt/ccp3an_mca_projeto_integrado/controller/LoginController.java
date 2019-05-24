@@ -29,7 +29,7 @@ public class LoginController {
         if (loginService.logar(usuario)) {
             if(loginService.verificarPermissao(usuario).equals("administrador")) {
                 request.getSession().setAttribute("usuarioLogado", usuario);
-                return "redirect:/";
+                return "criar_noticia";
             } else {
                 return "login";
             }
