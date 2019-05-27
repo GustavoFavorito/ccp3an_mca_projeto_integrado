@@ -90,7 +90,7 @@ public class ConteudoService implements IConteudoService{
 			tagHtml.append(arquivo.getNome());
 			tagHtml.append("</a>");
 		}else if(tipoArquivo.toLowerCase().equals("streaming")){
-			tagHtml.append("<iframe src='");
+			tagHtml.append("<iframe height=\"315\" src='");
 			tagHtml.append(arquivo.getCaminho());
 			tagHtml.append("' >");
 			tagHtml.append("</iframe> ");
