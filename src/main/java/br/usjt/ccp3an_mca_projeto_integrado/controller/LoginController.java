@@ -28,8 +28,8 @@ public class LoginController {
     public String fazerLogin (HttpServletRequest request, Usuario usuario, Model model) {
         if (loginService.logar(usuario)) {
             if(loginService.verificarPermissao(usuario).equals("administrador")) {
-                request.getSession().setAttribute("usuarioLogado", usuario);
-                return "criar_noticia";
+                request.getSession().setAttribute("administrador", usuario);
+                return "redirect:/";
             } else {
                 return "login";
             }

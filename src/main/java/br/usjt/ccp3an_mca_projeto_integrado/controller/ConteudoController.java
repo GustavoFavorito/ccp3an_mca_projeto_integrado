@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
@@ -85,14 +87,18 @@ public class ConteudoController {
 	}
 
 	@GetMapping("/feedback/{feedback}/{id}")
-	public String feedback(@PathVariable String feedback, @PathVariable Long id) {
-		if(feedback.equals("like")) {
-			conteudoService.darLike(id);
-		} else if(feedback.equals("dislike")){
-			conteudoService.darDislike(id);
+	public String feedback(@PathVariable String feedback, @PathVariable Long id, HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		if(session.getAttribute("administrador") != null) {
+			if (feedback.equals("like")) {
+				conteudoService.darLike(id);
+			} else if (feedback.equals("dislike")) {
+				conteudoService.darDislike(id);
+			}
+		} else if(session.getAttribute("administrador") == null){
+			return "redirect:/login";
 		}
-
-		return "redirect:/";
+		return "redirect:/	";
 	}
 
 	@GetMapping("/busca_like")
