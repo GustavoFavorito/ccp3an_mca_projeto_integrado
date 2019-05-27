@@ -1119,3 +1119,17 @@ legend {
 .preview img, .preview iframe, .preview a, .preview audio, .preview video{
 	width: 50%;
 }
+
+a img{
+	width: 10%;
+}
+
+iframe, audio, video{
+	width: 100%;
+}
+
+.caixa-conteudo{
+	margin: 0px 0px 40px 0px;
+	padding: 10px;
+	border: 1px solid #dcdcdc;
+}
