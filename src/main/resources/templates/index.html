@@ -12,6 +12,17 @@
 	<link type="text/css" rel="stylesheet" th:href="@{~/css/font-awesome.min.css}"/>
 	<link type="text/css" rel="stylesheet" th:href="@{~/css/estilo.css}"/>
 	<link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("#locales").change(function() {
+				var selectedOption = $('#locales').val();
+				if (selectedOption !== '') {
+					window.location.replace('home?lang=' + selectedOption);
+				}
+			});
+		});
+	</script>
 	<title>Media Center</title>
 </head>
 
@@ -169,7 +180,7 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="section-title">
-										<h2>Noticias Recentes</h2>
+										<h2 th:text="#{noticias-recentes}" ></h2>
 									</div>
 								</div>
 
@@ -256,6 +267,15 @@
 								Todos os direitos reservados
 							</span>
 						</div>
+						
+						<br />
+					<br /> <span th:text="#{lang.esc}"></span>: <select id="locales">
+						<option value=""></option>
+						<option value="pt" th:text="#{lang.pt}"></option>
+						<option value="en" th:text="#{lang.eng}"></option>
+						<option value="es" th:text="#{lang.es}"></option>
+					</select>
+					
 					</div>
 				</div>
 	
