@@ -58,34 +58,18 @@
 					<!-- /nav -->
 	
 					<!-- BOTÃO PESQUISA & TRANSIÇÃO -->
-					<div class="nav-btns" id="buscaConteudo">
-						<form action="/conteudo/busca" method="post">
-							<div class="search-form">
-								<input class="search-input" type="text" name="search"
-									   placeholder="Digite sua pesquisa"/>
-								<button class="search-close">
-									<i class="fa fa-times"></i>
-								</button>
-							</div>
-							<input class="search-input" type="text" name="descricao" autocomplete="off">
-							<input type="submit">
-						</form>
-
-					</div>
 					<div class="nav-btns">
 						<button class="aside-btn">
 							<i class="fa fa-bars"></i>
 						</button>
-						<button class="search-btn">
-							<i class="fa fa-search"></i>
-						</button>
-						<div class="search-form">
-							<input class="search-input" type="text" name="search" placeholder="Digite sua pesquisa">
-							<button class="search-close">
-								<i class="fa fa-times"></i>
-							</button>
-						</div>
 					</div>
+					<form action="/conteudo/busca" method="post">
+						<div class="nav-btns" id="buscaConteudo">
+							<input class="search-input" type="text" name="descricao" autocomplete="off">
+							<button class="search-btn"  type="submit"><i class="fa fa-search"></i></button>
+						</div>
+					</form>
+
 					<!-- /BOTÃO PESQUISA & TRANSIÇÃO -->
 				</div>
 			</div>
