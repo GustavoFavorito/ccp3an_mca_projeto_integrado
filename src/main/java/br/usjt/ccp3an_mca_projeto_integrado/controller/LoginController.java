@@ -17,7 +17,7 @@ public class LoginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping (value = {"/login", "/fazerLogin", "/"})
+    @GetMapping (value = {"/login", "/fazerLogin"})
     public ModelAndView login () {
         ModelAndView mv = new ModelAndView ("login");
         mv.addObject(new Usuario());

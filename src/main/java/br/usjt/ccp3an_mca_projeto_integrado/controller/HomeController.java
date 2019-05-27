@@ -22,7 +22,7 @@ public class HomeController {
     @Autowired
     ICategoriaService categoriaService;
 
-    @GetMapping({"/home"})
+    @GetMapping({"/home", "/"})
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView ("index");
         List<Categoria> categorias = categoriaService.carregarCategorias();
