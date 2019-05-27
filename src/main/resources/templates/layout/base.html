@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
     <head>
         <meta charset="utf-8"/>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
@@ -7,12 +7,13 @@
         
         <title>Media Center</title>
 		<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=rficbx1xu9hgmg4edb9i3qwjwuakiwqbmoufhkibrzj5u02b"></script>
-        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/> 
-		<link type="text/css" rel="stylesheet" href="../css/bootstrap.min.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet"/>
+		<link type="text/css" rel="stylesheet" th:href="@{~/css/bootstrap.min.css}"/>
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
-		<link type="text/css" rel="stylesheet" href="../css/estilo.css"/>
-		<script type="text/javascript" src="static/js/tinymce/tinymce.js"></script>
-		<script type="text/javascript" src="static/js/tinymce/jquery.tinymce.min.js"></script>
+
+		<link type="text/css" rel="stylesheet" th:href="@{~/css/estilo.css}"/>
+		<script type="text/javascript" th:src="@{~/js/tinymce/tinymce.js}"></script>
+		<script type="text/javascript" th:src="@{~/js/tinymce/jquery.tinymce.min.js}"></script>
 		<script>
 			tinymce.init({
 				selector: '#mytextarea'
@@ -140,7 +141,7 @@
 
 					<div class="col-md-3">
 						<div class="footer-widget">
-							<h3 class="footer-title">Receba nossas atualizações</h3>
+							<h3 class="footer-title" th:text="#{receba-nossas-atualizacoes}"></h3>
 							<div class="footer-newsletter">
 								<form>
 									<input class="input" type="email" name="newsletter" placeholder="Digite seu e-mail"/>
@@ -162,11 +163,11 @@
 			<!-- /container -->
 		</footer>
 		<!-- /RODAPÉ -->
-        
-        <script src="../js/jquery.min.js"></script>
-		<script src="../js/bootstrap.min.js"></script>
-		<script src="../js/main.js"></script>
-        <script src="../js/criarNoticia.js"></script>
+
+		<script th:src="@{~/js/jquery.min.js}"></script>
+		<script th:src="@{~/js/bootstrap.min.js}"></script>
+		<script th:src="@{~/js/main.js}"></script>
+		<script th:src="@{~/js/criarNoticia.js}"></script>
         
     </body>
 </html>

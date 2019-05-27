@@ -16,6 +16,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+
 @Controller
 @RequestMapping("/conteudo")
 public class ConteudoController {
@@ -96,5 +99,16 @@ public class ConteudoController {
 		map.addAttribute("conteudos");
 
 		return "index :: #feedback";
+	}
+
+	@GetMapping("exibir/{id}")
+	public ModelAndView exibirConteudo(@PathVariable Long id) {
+		ModelAndView mv = new ModelAndView ("conteudo/criar");
+
+		mv.addObject(new Conteudo());
+		Conteudo conteudo =  conteudoService.buscaPorId(id);
+		mv.addObject("conteudo", conteudo);
+
+		return mv;
 	}
 }

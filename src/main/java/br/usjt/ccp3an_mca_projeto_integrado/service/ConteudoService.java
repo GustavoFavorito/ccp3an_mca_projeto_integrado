@@ -131,4 +131,6 @@ public class ConteudoService implements IConteudoService{
 	public void darDislike(Long id) {
 		conteudoRepo.darDislike(id);
 	}
+
+	public Conteudo buscaPorId(Long id) { return conteudoRepo.getOne(id); }
 }

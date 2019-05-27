@@ -16,23 +16,23 @@
 		  
 	        <form method="POST" action="criar">
                 
-                <fieldset>
+                <fieldset class="form-group">
 	                
 	                <legend>Informações</legend>
 	                
 	                <div class="box">
 	                	<div>Titulo:</div> 
-	                	<input type="text" name="titulo" placeholder="Digite o titulo do conteúdo">
+	                	<input type="text" class="form-control" name="titulo" placeholder="Digite o titulo do conteúdo">
 	                </div>
 	                
 	                <div class="box">
 	                	<div>Descrição:</div>
-	                	<textarea rows="5" cols="50" name="descricao" placeholder="Faça uma breve descrição"></textarea>
+	                	<textarea rows="5" cols="50" class="form-control" name="descricao" placeholder="Faça uma breve descrição"></textarea>
 	                </div>
 	                
 	        	</fieldset>
                 
-                <fieldset>
+                <fieldset class="form-group">
 	                
 	                <legend>Arquivos</legend>
 	                
@@ -52,7 +52,7 @@
 	                
 	        	</fieldset>
 	        	
-	        	<fieldset>
+	        	<fieldset class="form-group">
 	                
 	                <legend>Editor</legend>
 	                
@@ -64,7 +64,7 @@
 	                
 	        	</fieldset>
 	        	
-	        	<fieldset>
+	        	<fieldset class="form-group">
 	                
 	                <legend>Catergorias</legend>
 	                
@@ -77,7 +77,7 @@
 	                
 	        	</fieldset>
 	        	
-	        	<fieldset>
+	        	<fieldset class="form-group">
 	                
 	                <legend>Tags</legend>
 	                
@@ -90,7 +90,7 @@
 	                
 	        	</fieldset>
 	        	
-	        	<fieldset>
+	        	<fieldset class="form-group">
 	                
 	                <legend>Tipo de acesso</legend>
 	                <div class="box">
@@ -105,13 +105,14 @@
 	                
 	        	</fieldset>
 	        	
-	        	<fieldset>
+	        	<fieldset class="form-group">
 	                
 	                <legend>Confirmação</legend>
 	                
 	                <div class="box">
 		                <button type="submit" class="btn btn-primary">Criar</button>
-		                <button type="button" class="btn btn-danger">Cancelar</button>
+		                <button type="button" class="btn btn-danger"
+								onclick="window.history.go(-1); return false;">Cancelar</button>
 	                </div>
 	                
 	        	</fieldset>
