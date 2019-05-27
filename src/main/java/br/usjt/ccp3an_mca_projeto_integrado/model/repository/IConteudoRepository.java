@@ -27,4 +27,7 @@ public interface IConteudoRepository extends JpaRepository<Conteudo, Long>{
     @Modifying
     @Query("UPDATE Conteudo c SET c.feedbackDislike = c.feedbackDislike + 1 WHERE c.id = ?1")
     public void darDislike(Long id);
+
+    @Query("SELECT c FROM Conteudo c WHERE c.feedbackLike = (SELECT MAX(c.feedbackLike) from c)")
+    public Conteudo buscaPorLike();
 }

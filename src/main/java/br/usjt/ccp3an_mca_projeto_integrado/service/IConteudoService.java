@@ -15,4 +15,5 @@ public interface IConteudoService {
 	public List<Conteudo> findAll();
     public void darLike(Long id);
     public void darDislike(Long id);
+    public Conteudo buscaPorLike();
 }

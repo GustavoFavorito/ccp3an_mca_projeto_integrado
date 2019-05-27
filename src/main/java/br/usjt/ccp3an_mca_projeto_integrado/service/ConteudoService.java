@@ -131,4 +131,9 @@ public class ConteudoService implements IConteudoService{
 	public void darDislike(Long id) {
 		conteudoRepo.darDislike(id);
 	}
+
+	@Override
+	public Conteudo buscaPorLike() {
+		return buscaPorLike();
+	}
 }

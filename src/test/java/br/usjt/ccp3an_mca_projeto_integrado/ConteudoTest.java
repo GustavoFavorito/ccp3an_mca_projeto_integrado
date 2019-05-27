@@ -39,4 +39,11 @@ public class ConteudoTest {
             System.out.println("HTML: [" + conteudo.getHtml() + "]\n");
         }
     }
+
+    @Test
+    public void buscaPorLike() {
+        Conteudo conteudo = conteudoRepo.buscaPorLike();
+        System.out.println("Titulo: [" + conteudo.getTitulo() + "]");
+        System.out.println("Likes: [" + conteudo.getLike() + "]");
+    }
 }

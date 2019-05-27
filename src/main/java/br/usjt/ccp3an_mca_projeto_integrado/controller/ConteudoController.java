@@ -2,19 +2,18 @@ package br.usjt.ccp3an_mca_projeto_integrado.controller;
 
 
 import br.usjt.ccp3an_mca_projeto_integrado.model.*;
-import br.usjt.ccp3an_mca_projeto_integrado.model.repository.IConteudoRepository;
 import br.usjt.ccp3an_mca_projeto_integrado.service.IArquivoService;
 import br.usjt.ccp3an_mca_projeto_integrado.service.ICategoriaService;
 import br.usjt.ccp3an_mca_projeto_integrado.service.IConteudoService;
 import br.usjt.ccp3an_mca_projeto_integrado.service.ITagService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
+
 import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Map;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/conteudo")
@@ -86,15 +85,22 @@ public class ConteudoController {
 	}
 
 	@GetMapping("/feedback/{feedback}/{id}")
-	public String feedback(@PathVariable String feedback, @PathVariable Long id, ModelMap map) {
+	public String feedback(@PathVariable String feedback, @PathVariable Long id) {
 		if(feedback.equals("like")) {
 			conteudoService.darLike(id);
 		} else if(feedback.equals("dislike")){
 			conteudoService.darDislike(id);
 		}
 
-		map.addAttribute("conteudos");
+		return "redirect:/";
+	}
 
-		return "index :: #feedback";
+	@GetMapping("/busca_like")
+	public ModelAndView buscaPorLike() {
+		ModelAndView mv = new ModelAndView("index");
+		mv.addObject(new Conteudo());
+		Conteudo conteudo = conteudoService.buscaPorLike();
+		mv.addObject("conteudo", conteudo);
+		return mv;
 	}
 }
