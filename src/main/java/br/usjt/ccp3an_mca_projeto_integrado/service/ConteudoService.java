@@ -117,4 +117,18 @@ public class ConteudoService implements IConteudoService{
 	public List<Conteudo> buscaPorCategoria(String categoria) {
 		return conteudoRepo.buscaPorCategoria(categoria);
 	}
+
+	public List<Conteudo> findAll() {
+		return conteudoRepo.findAll();
+	}
+
+	@Override
+	public void darLike(Long id) {
+		conteudoRepo.darLike(id);
+	}
+
+	@Override
+	public void darDislike(Long id) {
+		conteudoRepo.darDislike(id);
+	}
 }
