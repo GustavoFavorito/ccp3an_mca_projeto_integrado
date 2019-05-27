@@ -1,6 +1,7 @@
 package br.usjt.ccp3an_mca_projeto_integrado.model;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -25,6 +26,10 @@ public class Conteudo {
     @ManyToOne
     @JoinColumn
     private Categoria categoria;
+    @Column(nullable = false, columnDefinition = "int(20) default 0")
+    private int feedbackLike;
+    @Column(nullable = false, columnDefinition = "int(20) default 0")
+    private int feedbackDislike;
 
     public Long getId() {
         return id;
@@ -104,5 +109,21 @@ public class Conteudo {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public int getLike() {
+        return feedbackLike;
+    }
+
+    public void setLike(int like) {
+        this.feedbackLike = like;
+    }
+
+    public int getDislike() {
+        return feedbackDislike;
+    }
+
+    public void setDislike(int dislike) {
+        this.feedbackDislike = dislike;
     }
 }

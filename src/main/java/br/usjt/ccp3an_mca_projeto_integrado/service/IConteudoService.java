@@ -12,4 +12,7 @@ public interface IConteudoService {
 	public String gerarHtml(String html, Arquivo arquivo, String descricao);
 	public List<Conteudo> buscaPorDescricao(String descricao);
 	public List<Conteudo> buscaPorCategoria(String categoria);
+	public List<Conteudo> findAll();
+    public void darLike(Long id);
+    public void darDislike(Long id);
 }
