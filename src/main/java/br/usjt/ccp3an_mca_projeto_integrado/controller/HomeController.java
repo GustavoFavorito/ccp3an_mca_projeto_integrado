@@ -7,6 +7,7 @@ import br.usjt.ccp3an_mca_projeto_integrado.service.IConteudoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -45,5 +46,33 @@ public class HomeController {
 
         return "index";
     }
+    
+    @GetMapping("/home/busca_categoria/{categoria}")
+	public ModelAndView buscaPorCategoria(@PathVariable String categoria) {
+		
+    	ModelAndView mv = new ModelAndView("index");
+		
+		List<Categoria> categorias = categoriaService.carregarCategorias();
+		mv.addObject("categorias", categorias);
+		
+		mv.addObject(new Conteudo());
+		List<Conteudo> conteudos = conteudoService.buscaPorCategoria(categoria);
+		mv.addObject("conteudos", conteudos);
+		
+		return mv;
+	}
+    
+    @PostMapping("/home/busca")
+	public ModelAndView buscarConteudo(String descricao) {
+		ModelAndView mv = new ModelAndView("index");
+
+		List<Categoria> categorias = categoriaService.carregarCategorias();
+		mv.addObject("categorias", categorias);
+		
+		mv.addObject(new Conteudo());
+		List<Conteudo> conteudos = conteudoService.findAll();
+		mv.addObject("conteudos", conteudos);
+		return mv;
+	}
 
 }

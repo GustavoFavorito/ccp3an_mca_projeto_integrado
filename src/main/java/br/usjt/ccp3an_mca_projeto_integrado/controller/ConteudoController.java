@@ -86,15 +86,13 @@ public class ConteudoController {
 	}
 
 	@GetMapping("/feedback/{feedback}/{id}")
-	public String feedback(@PathVariable String feedback, @PathVariable Long id, ModelMap map) {
+	public String feedback(@PathVariable String feedback, @PathVariable Long id) {
 		if(feedback.equals("like")) {
 			conteudoService.darLike(id);
 		} else if(feedback.equals("dislike")){
 			conteudoService.darDislike(id);
 		}
 
-		map.addAttribute("conteudos");
-
-		return "index :: #feedback";
+		return "redirect:/";
 	}
 }

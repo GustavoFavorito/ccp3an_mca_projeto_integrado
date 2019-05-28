@@ -38,7 +38,7 @@ public class ArquivoService implements IArquivoService{
 		String extensao = extrairExtensao(nomeOriginal);
 		
 		Arquivo arquivo = new Arquivo();
-		arquivo.setCaminho("../fileServer/");
+		arquivo.setCaminho("/fileServer/");
 		arquivo.setExtensao(extensaoArquivoService.carregarPorDescricao(extensao));
 		arquivo.setNome(extrairNome(nomeOriginal, extensao));
 		

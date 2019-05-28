@@ -51,7 +51,7 @@
 					<!-- nav -->
 					<ul class="nav-menu nav navbar-nav">
 						<li th:each="categoria, iStat : ${categorias}" th:class="'cat-'+${iStat.count}">
-                                <a href="#" th:href="@{/conteudo/busca_categoria/{categoria}(categoria=${categoria.getDescricao()})}"
+                                <a href="#" th:href="@{/home/busca_categoria/{categoria}(categoria=${categoria.getDescricao()})}"
                                    th:text="#{*{categoria.getDescricao()}}"></a>
 						</li>
 					</ul>
@@ -65,7 +65,7 @@
 							<i class="fa fa-search"></i>
 						</button>
 						<div class="search-form">
-							<form action="/conteudo/busca" method="post">
+							<form action="/home/busca" method="post">
 								<div class="search-form">
 									<input class="search-input" type="text" name="descricao"
 										   placeholder="Digite sua pesquisa"/>
@@ -106,9 +106,9 @@
 				<div class="section-row">
 					<h3><span th:text="#{lang.esc}"></span>:</h3>
 					<ul>
-						<li><a href="http://localhost:8080/home?lang=pt"><img alt="" src="imagens/portugues.png" class="icon-ling"></a> português</li>
-						<li><a href="http://localhost:8080/home?lang=es"><img alt="" src="imagens/spanish.png" class="icon-ling"></a> spanish</li>
-						<li><a href="http://localhost:8080/home?lang=en"><img alt="" src="imagens/english.png" class="icon-ling"></a> english</li>
+						<li><a href="http://localhost:8080/home?lang=pt"><img alt="" src="/imagens/portugues.png" class="icon-ling"></a> português</li>
+						<li><a href="http://localhost:8080/home?lang=es"><img alt="" src="/imagens/spanish.png" class="icon-ling"></a> spanish</li>
+						<li><a href="http://localhost:8080/home?lang=en"><img alt="" src="/imagens/english.png" class="icon-ling"></a> english</li>
 					</ul>
 				</div>
 				<!-- /MEDIA SOCIAS -->
@@ -135,7 +135,7 @@
 				<div class="col-md-6">
 					<div class="post post-thumb">
 						<a class="post-img" href="detalhes-noticias.html">
-                            <img src="imagens/1.png"></a>
+                            <img src="/imagens/1.png"></a>
 						<div class="post-body">
 							<h3 class="post-title">
 								<a th:text="#{noticias-recentes}"></a>
@@ -149,7 +149,7 @@
 				<div class="col-md-6">
 					<div class="post post-thumb">
 						<a class="post-img" href="detalhes-noticias.html">
-							<img src="imagens/1.png">
+							<img src="/imagens/1.png">
 						</a>
 						<div class="post-body">
 							<h3 class="post-title">

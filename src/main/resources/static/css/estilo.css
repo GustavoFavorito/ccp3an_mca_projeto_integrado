@@ -1124,7 +1124,7 @@ a img{
 	width: 10%;
 }
 
-iframe, audio, video{
+iframe, audio, video, img{
 	width: 100%;
 }
 
